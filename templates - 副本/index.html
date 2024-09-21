@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <title>网页版代码执行器</title>
+  <style>
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body>
+  <div class="flex flex-col md:flex-row h-screen">
+    <div class="w-full md:w-1/4 bg-secondary p-4 text-secondary-foreground relative">
+      <div class="mb-4">
+        <h1 class="text-3xl font-bold mb-2">网页版代码执行器</h1>
+        <p id="description" class="text-muted-foreground mb-4">检测已安装的执行器...</p>
+        <div id="executors-list"></div>
+        <p id="selected-language" class="mt-4 text-primary-foreground">当前选择的语言: 无</p>
+        <div class="mt-4">
+          <input type="file" id="file-upload" class="bg-primary text-primary-foreground py-2 mb-2 w-full hover:bg-primary/80">
+        </div>
+      </div>
+      <div id="current-language" class="absolute bottom-4 left-4 text-black-600">
+        当前代码执行语言: 无
+      </div>
+    </div>
+    <div class="flex-1 flex flex-col md:flex-row">
+      <div class="w-full md:w-1/2 bg-card p-4 text-card-foreground">
+        <p class="mb-2">这里是输入代码的区域</p>
+        <textarea id="code-input" class="w-full h-full p-2 bg-input text-foreground border border-border rounded-md" placeholder="在这里输入代码..."></textarea>
+      </div>
+      <div class="w-full md:w-1/2 bg-card p-4 text-card-foreground">
+        <div class="mb-4">
+          <button id="execute-button" class="bg-primary text-primary-foreground w-full py-2 hover:bg-primary/80">执行</button>
+        </div>
+        <div>
+          <p class="mb-2">运行结果：</p>
+          <div id="output" class="w-full h-full p-2 bg-input text-foreground border border-border rounded-md">
+            <pre>这个区域展示代码运行结果</pre>
+          </div>
+          <div id="plot-result" class="w-full h-full p-2 bg-input text-foreground border border-border rounded-md">
+            <img id="plot-image" src="" alt="Generated Plot" style="display:none;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

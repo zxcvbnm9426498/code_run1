@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+  <script src="{{ url_for('static', filename='js/scripts.js') }}" defer></script>
+  <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+  <title>网页版代码执行器</title>
+  <style>
+    pre {
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-r from-blue-500 to-purple-600 text-gray-900">
+  <div class="flex flex-col md:flex-row h-screen">
+    <div class="w-full md:w-1/4 bg-white bg-opacity-75 p-6 text-gray-800 shadow-lg relative">
+      <div class="mb-6">
+        <h1 class="text-4xl font-bold mb-4 text-center text-blue-600">网页版代码执行器</h1>
+        <p id="description" class="text-gray-600 mb-4 text-center">检测已安装的执行器...</p>
+        <div class="space-y-4">
+          <button id="toggle-executors" class="bg-blue-500 text-white w-full py-2 px-4 rounded-lg font-medium hover:bg-blue-600 transition duration-300 ease-in-out">显示/隐藏执行器列表</button>
+          <div id="executors-list" class="space-y-2 hidden"></div>
+        </div>
+        <p id="selected-language" class="mt-6 text-blue-600 font-semibold text-center">当前选择的语言: 无</p>
+        <div class="mt-6 flex justify-center">
+          <input type="file" id="file-upload" class="bg-blue-500 text-white py-2 px-4 mb-2 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out cursor-pointer">
+        </div>
+      </div>
+    </div>
+    <div class="flex-1 flex flex-col md:flex-row">
+      <div class="w-full md:w-1/2 bg-white bg-opacity-75 p-6 text-gray-800 shadow-lg">
+        <p class="mb-4 font-medium">这里是输入代码的区域</p>
+        <textarea id="code-input" class="w-full h-full p-4 bg-gray-200 text-gray-900 border border-gray-300 rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="在这里输入代码..."></textarea>
+      </div>
+      <div class="w-full md:w-1/2 bg-white bg-opacity-75 p-6 text-gray-800 shadow-lg">
+        <div class="mb-4">
+          <button id="execute-button" class="bg-blue-500 text-white w-full py-3 rounded-lg font-semibold hover:bg-blue-600 transition duration-300 ease-in-out">执行</button>
+        </div>
+        <div>
+          <p class="mb-4 font-medium">运行结果：</p>
+          <div id="output" class="w-full h-full p-4 bg-gray-200 text-gray-900 border border-gray-300 rounded-lg overflow-y-auto">
+            <pre id="result-text">这个区域展示代码运行结果</pre>
+            <img id="plot-image" src="" alt="Generated Plot" class="w-full h-auto rounded-lg shadow-md" style="display:none;">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
